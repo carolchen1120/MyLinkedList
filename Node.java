@@ -15,22 +15,20 @@ public class Node{
     return change;
   }
 
-  public String getNext() {
+  public Node getNext() {
     return this.next;
   }
 
-  public String setNext(String change) {
+  public void setNext(Node change) {
     this.next = change;
-    return change;
   }
 
-  public String getPrev() {
+  public Node getPrev() {
     return this.prev;
   }
 
-  public String setPrev(String change) {
+  public void setPrev(Node change) {
     this.prev = change;
-    return change;
   }
 
   //write get/set methods for all three instance variables.
