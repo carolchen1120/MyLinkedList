@@ -35,10 +35,18 @@ public class MyLinkedList{
     Node myNode = new Node(value);
     Node now = new Node(this.start.getData());
     for (int i = 0; i < this.size; i++) {
-      if (i == index && index == 0) {
-        for (int j = this.size - 1; j > index; j--) {
-          // Finish this!!!
-        }
+      if (i < index-1) {
+        now.setData(now.getNext());
+      } else if (i == index - 1) {
+        now.setNext(myNode.getData());
+        now.setData(now.getNext().getNext());
+      } else if (i == index) {
+        now.setData(myNode.getData());
+      } else if (i == index + 1) {
+        now.setPrev(myNode.getData());
+        now.setData(now.getNext().getNext());
+      } else if (i > index + 1) {
+        now.setData(now.getNext().getNext());
       }
     }
   }
@@ -58,7 +66,15 @@ public class MyLinkedList{
     Node myNode = new Node(value);
     for (int i = 0; i < this.size; i++) {
       if (i == index) {
-        // Finish this!!!
+        if (i < index-1) {
+          now.setData(now.getNext());
+        } else if (i == index - 1) {
+          now.setNext(myNode.getData());
+        } else if (i == index) {
+          now.setData(myNode.getData());
+        } else if (i == index + 1) {
+          now.setPrev(myNode.getData());
+        }
       }
     }
   }
@@ -91,6 +107,7 @@ public class MyLinkedList{
         now.setData(now.getNext().getNext());
       }
     }
+    this.size--;
     return answer;
   }
 
