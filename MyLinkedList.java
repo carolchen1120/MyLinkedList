@@ -73,5 +73,18 @@ public class MyLinkedList{
     return answer;
   }
 
+  public String remove(int index) {
+    // Finish this!!!
+  }
+
+  /*
+  *@postcondition: All of the elements from other are removed from the other, and connected to the end of this linked list.
+  *@postcondition: The size of other is reduced to 0.
+  *@postcondition: The size of this is now the combined sizes of both original lists
+  */
+  public void extend(MyLinkedList other){
+    // Finish this!!!
+  }
+
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
