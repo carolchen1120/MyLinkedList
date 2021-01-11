@@ -64,17 +64,34 @@ public class MyLinkedList{
   }
 
   public String toString(){
-    String answer = "";
+    String answer = "[";
     Node now = new Node(this.start.getData());
-    for (int i = 0; i < this.size; i++) {
+    for (int i = 0; i < this.size-1; i++) {
       answer += now.getData();
+      answer += ", ";
       now.setData(now.getNext());
     }
-    return answer;
+    answer += this.end.getData();
+    return answer + "]";
   }
 
   public String remove(int index) {
-    // Finish this!!!
+    Node now = new Node(this.start.getData());
+    String answer = "";
+    for (int i = 0; i < this.size; i++) {
+      if (i < index-1) {
+        now.setData(now.getNext());
+      } else if (i == index - 1) {
+        now.setData(now.getNext());
+        now.setNext(now.getNext().getNext());
+      } else if (i == index) {
+        answer += now.getData();
+        now.setData(now.getNext().getNext());
+      } else if (i > index - 1) {
+        now.setData(now.getNext().getNext());
+      }
+    }
+    return answer;
   }
 
   /*
