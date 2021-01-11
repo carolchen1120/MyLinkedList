@@ -7,7 +7,7 @@ public class MyLinkedList{
   }
 
   public int size(){
-
+    return this.size;
   }
 
   public boolean add(String value){
@@ -29,6 +29,6 @@ public class MyLinkedList{
   public String toString(){
 
   }
-  
+
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
