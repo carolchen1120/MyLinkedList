@@ -49,6 +49,7 @@ public class MyLinkedList{
         now.setData(now.getNext().getNext());
       }
     }
+    this.size++;
   }
 
   public String get(int index){
@@ -117,7 +118,14 @@ public class MyLinkedList{
   *@postcondition: The size of this is now the combined sizes of both original lists
   */
   public void extend(MyLinkedList other){
-    // Finish this!!!
+    Node myNode = new Node(other);
+    Node now = new Node(other.start.getData());
+    this.end.setNext(myNode.getData());
+    for (int i = 0; i < other.size; i++) {
+      this.add(now.getData());
+      now.setData(now.getNext());
+    }
+    this.size += other.size;
   }
 
   //Any helper method that returns a Node object MUST BE PRIVATE!
