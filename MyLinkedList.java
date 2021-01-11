@@ -18,17 +18,16 @@ public class MyLinkedList{
       this.start.setData(myNode.getData());
       this.end.setData(myNode.getData());
       this.size++;
-      this.start.prev = null;
-      this.start.next = null;
+      this.start.setPrev(null);
+      this.start.setPrev(null);
       return true;
     } else {
-      this.end.setNext(myNode.getData());
+      this.end.setNext(myNode);
       this.end.setData(myNode.getData());
       this.size++;
-      this.end.next = null;
+      this.end.setNext(null);
       return true;
     }
-    return false;
   }
 
   public void add(int index, String value){
@@ -36,17 +35,17 @@ public class MyLinkedList{
     Node now = new Node(this.start.getData());
     for (int i = 0; i < this.size; i++) {
       if (i < index-1) {
-        now.setData(now.getNext());
+        now.setData(now.getNext().getData());
       } else if (i == index - 1) {
-        now.setNext(myNode.getData());
-        now.setData(now.getNext().getNext());
+        now.setNext(myNode);
+        now.setData(now.getNext().getNext().getData());
       } else if (i == index) {
         now.setData(myNode.getData());
       } else if (i == index + 1) {
-        now.setPrev(myNode.getData());
-        now.setData(now.getNext().getNext());
+        now.setPrev(myNode);
+        now.setData(now.getNext().getNext().getData());
       } else if (i > index + 1) {
-        now.setData(now.getNext().getNext());
+        now.setData(now.getNext().getNext().getData());
       }
     }
     this.size++;
@@ -54,30 +53,34 @@ public class MyLinkedList{
 
   public String get(int index){
     Node now = new Node(this.start.getData());
+    String answer = "";
     for (int i = 0; i < this.size; i++) {
       if (i == index) {
-        return now.getData();
+        answer += now.getData();
       } else {
-        now.setData(now.getNext());
+        now.setData(now.getNext().getData());
       }
     }
+    return answer;
   }
 
   public String set(int index, String value){
     Node myNode = new Node(value);
+    Node now = new Node(this.start.getData());
     for (int i = 0; i < this.size; i++) {
       if (i == index) {
         if (i < index-1) {
-          now.setData(now.getNext());
+          now.setData(now.getNext().getData());
         } else if (i == index - 1) {
-          now.setNext(myNode.getData());
+          now.setNext(myNode);
         } else if (i == index) {
           now.setData(myNode.getData());
         } else if (i == index + 1) {
-          now.setPrev(myNode.getData());
+          now.setPrev(myNode);
         }
       }
     }
+    return value;
   }
 
   public String toString(){
@@ -86,7 +89,7 @@ public class MyLinkedList{
     for (int i = 0; i < this.size-1; i++) {
       answer += now.getData();
       answer += ", ";
-      now.setData(now.getNext());
+      now.setData(now.getNext().getData());
     }
     answer += this.end.getData();
     return answer + "]";
@@ -97,15 +100,15 @@ public class MyLinkedList{
     String answer = "";
     for (int i = 0; i < this.size; i++) {
       if (i < index-1) {
-        now.setData(now.getNext());
+        now.setData(now.getNext().getData());
       } else if (i == index - 1) {
-        now.setData(now.getNext());
+        now.setData(now.getNext().getData());
         now.setNext(now.getNext().getNext());
       } else if (i == index) {
         answer += now.getData();
-        now.setData(now.getNext().getNext());
+        now.setData(now.getNext().getNext().getData());
       } else if (i > index - 1) {
-        now.setData(now.getNext().getNext());
+        now.setData(now.getNext().getNext().getData());
       }
     }
     this.size--;
@@ -118,12 +121,11 @@ public class MyLinkedList{
   *@postcondition: The size of this is now the combined sizes of both original lists
   */
   public void extend(MyLinkedList other){
-    Node myNode = new Node(other);
     Node now = new Node(other.start.getData());
-    this.end.setNext(myNode.getData());
+    this.end.setNext(now);
     for (int i = 0; i < other.size; i++) {
       this.add(now.getData());
-      now.setData(now.getNext());
+      now.setData(now.getNext().getData());
     }
     this.size += other.size;
   }
