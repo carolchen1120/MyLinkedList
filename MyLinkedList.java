@@ -41,7 +41,14 @@ public class MyLinkedList{
   }
 
   public String get(int index){
-
+    Node now = this.start;
+    for (int i = 0; i < this.size; i++) {
+      if (i == index) {
+        return now.getData();
+      } else {
+        now = now.next;
+      }
+    }
   }
 
   public String set(int index, String value){
