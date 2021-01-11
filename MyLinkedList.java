@@ -11,7 +11,16 @@ public class MyLinkedList{
   }
 
   public boolean add(String value){
-
+    Node myNode = Node(value);
+    if (this.size == 0) {
+      this.start = myNode;
+      this.end = myNode;
+      return true;
+    } else {
+      this.end = myNode;
+      return true;
+    }
+    return false;
   }
 
   public void add(int index, String value){
