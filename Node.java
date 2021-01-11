@@ -10,24 +10,27 @@ public class Node{
     return this.data;
   }
 
-  public String setData() {
-
+  public String setData(String change) {
+    this.data = change;
+    return change;
   }
 
   public String getNext() {
     return this.next;
   }
 
-  public String setNext() {
-
+  public String setNext(String change) {
+    this.next = change;
+    return change;
   }
 
   public String getPrev() {
     return this.prev;
   }
 
-  public String setPrev() {
-
+  public String setPrev(String change) {
+    this.prev = change;
+    return change;
   }
 
   //write get/set methods for all three instance variables.
