@@ -1,6 +1,26 @@
 public class Node{
- public Node(String value){/*create a constructor*/}
- private String data;
- private Node next,prev;
- //write get/set methods for all three instance variables.
+  private String data;
+  private Node next,prev;
+
+  public Node(String value){
+    this.data = value;
+  }
+
+  public String getData() {
+
+  }
+
+  public String setData() {
+
+  }
+
+  public String getNext() {
+
+  }
+
+  public String setNext() {
+    
+  }
+
+  //write get/set methods for all three instance variables.
 }
