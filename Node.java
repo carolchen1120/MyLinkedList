@@ -7,7 +7,7 @@ public class Node{
   }
 
   public String getData() {
-
+    return this.data;
   }
 
   public String setData() {
@@ -15,11 +15,19 @@ public class Node{
   }
 
   public String getNext() {
-
+    return this.next;
   }
 
   public String setNext() {
-    
+
+  }
+
+  public String getPrev() {
+    return this.prev;
+  }
+
+  public String setPrev() {
+
   }
 
   //write get/set methods for all three instance variables.
