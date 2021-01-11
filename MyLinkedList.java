@@ -13,17 +13,17 @@ public class MyLinkedList{
   }
 
   public boolean add(String value){
-    Node myNode = Node(value);
+    Node myNode = new Node(value);
     if (this.size == 0) {
-      this.start = myNode;
-      this.end = myNode;
+      this.start.setData(myNode.getData());
+      this.end.setData(myNode.getData());
       this.size++;
       this.start.prev = null;
       this.start.next = null;
       return true;
     } else {
-      this.end.next = myNode;
-      this.end = myNode;
+      this.end.setNext(myNode.getData());
+      this.end.setData(myNode.getData());
       this.size++;
       this.end.next = null;
       return true;
@@ -32,40 +32,43 @@ public class MyLinkedList{
   }
 
   public void add(int index, String value){
-    Node myNode = Node(value);
-    for (int i = 0; i < size; i++) {
-      if (i == index) {
-
+    Node myNode = new Node(value);
+    Node now = new Node(this.start.getData());
+    for (int i = 0; i < this.size; i++) {
+      if (i == index && index == 0) {
+        for (int j = this.size - 1; j > index; j--) {
+          // Finish this!!!
+        }
       }
     }
   }
 
   public String get(int index){
-    Node now = this.start;
+    Node now = new Node(this.start.getData());
     for (int i = 0; i < this.size; i++) {
       if (i == index) {
         return now.getData();
       } else {
-        now = now.next;
+        now.setData(now.getNext());
       }
     }
   }
 
   public String set(int index, String value){
-    Node myNode = Node(value);
+    Node myNode = new Node(value);
     for (int i = 0; i < this.size; i++) {
       if (i == index) {
-
+        // Finish this!!!
       }
     }
   }
 
   public String toString(){
     String answer = "";
-    Node now = this.start;
+    Node now = new Node(this.start.getData());
     for (int i = 0; i < this.size; i++) {
       answer += now.getData();
-      now = now.next;
+      now.setData(now.getNext());
     }
     return answer;
   }
